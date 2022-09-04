@@ -1,29 +1,28 @@
+//This script fulfills the project reqs for "Sleep Debt Calculator" in Codecademy
+
+//return values change based on hours slept each day
 const getSleepHours = (day) => {
   switch (day) {
     case "Monday":
-      return 8;
-      break;
+      return 6;
     case "Tuesday":
-      return 8;
-      break;
+      return 7.75;
     case "Wednesday":
-      return 8;
-      break;
+      return 6;
     case "Thursday":
-      return 8;
-      break;
+      return 4.5;
     case "Friday":
-      return 8;
-      break;
+      return 7.25;
     case "Saturday":
-      return 8;
-      break;
+      return 12;
     case "Sunday":
-      return 8;
-      break;
+      return 6;
+    default:
+      return "Error!";
   }
 };
 
+//adds up total of hours slept
 const getActualSleepHours = () =>
   getSleepHours("Monday") +
   getSleepHours("Tuesday") +
@@ -33,8 +32,9 @@ const getActualSleepHours = () =>
   getSleepHours("Saturday") +
   getSleepHours("Sunday");
 
+//ideally everyone should get 8 hours of rest 
 const getIdealSleepHours = () => {
-  const idealHours = 7.5;
+  const idealHours = 8;
   return idealHours * 7;
 };
 
@@ -47,10 +47,16 @@ const calculateSleepDebt = () => {
   } else if (actualSleepHours > idealSleepHours) {
     console.log("You slept more than you need, Sleeping Beauty!");
   } else {
-    console.log("You got " + (idealSleephours - actualSleepHours) + " hour(s) less sleep than you need this week. You need more rest .... Coffee?");
+    console.log(
+      "You got " +
+        (idealSleepHours - actualSleepHours) +
+        " hour(s) less sleep than you need this week. You need more rest ... or maybe more coffee?"
+    );
   }
 };
 
+console.log("You slept for " + getActualSleepHours() + " hours this week.");
+console.log(
+  `Ideally, you should be getting ${getIdealSleepHours()} hours of sleep a week`
+);
 calculateSleepDebt();
-console.log(getActualSleepHours());
-console.log(getIdealSleepHours());
